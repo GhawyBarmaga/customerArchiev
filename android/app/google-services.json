@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "204620110750",
+    "project_id": "clientsarchiev",
+    "storage_bucket": "clientsarchiev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204620110750:android:d381f18e43080957c7548f",
+        "android_client_info": {
+          "package_name": "com.ghawy.clients_archiev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-e2F-W1HNBC8M2WgiDfN8KJRmIe0jwfM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
