@@ -139,8 +139,8 @@ class _AddInvoiceState extends State<AddInvoice> {
           ),
           RadioListTile<String>(
             activeColor: Colors.black,
-            title: const Text('رصيد علاج شهرى او يومى'),
-            value: 'رصيد علاج شهرى او يومى',
+            title: const Text('فاتورة شراء'),
+            value: 'شراء',
             groupValue: selectedOption,
             onChanged: (String? value) {
               setState(() {
