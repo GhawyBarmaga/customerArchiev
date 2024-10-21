@@ -37,7 +37,7 @@ class _AddClientsState extends State<AddClients> {
             style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
-                color: Colors.deepPurple),
+                color: Colors.black),
           ),
           centerTitle: true,
         ),
@@ -127,7 +127,7 @@ class _AddClientsState extends State<AddClients> {
                                 AsyncSnapshot<QuerySnapshot> snapshot) =>
                             ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.deepPurple,
+                                    backgroundColor: Colors.black,
                                     foregroundColor: Colors.white),
                                 onPressed: () async {
                                   //============Add clients==========================
