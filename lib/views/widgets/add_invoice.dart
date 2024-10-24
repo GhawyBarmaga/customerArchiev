@@ -58,7 +58,7 @@ class _AddInvoiceState extends State<AddInvoice> {
     } else {
       batch.set(invoices.doc(), {
         "name": name.text,
-        "type": "رصيد علاج",
+        "type": "فاتورة شراء ",
         "cureAmount": double.parse(cureAmount.text),
         "date": formattedDate,
         "uid": FirebaseAuth.instance.currentUser?.uid,
@@ -103,7 +103,7 @@ class _AddInvoiceState extends State<AddInvoice> {
         actions: [
           const Center(
             child: Text(
-              " اضافة فاتورة بيع او رصيد علاج  ",
+              " اضافة فاتورة بيع او شراء   ",
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
@@ -119,9 +119,7 @@ class _AddInvoiceState extends State<AddInvoice> {
             height: 20,
           ),
           CustomForm(
-              text: "قيمة العلاج",
-              type: TextInputType.number,
-              name: cureAmount),
+              text: "المبلغ", type: TextInputType.number, name: cureAmount),
           const SizedBox(
             height: 20,
           ),

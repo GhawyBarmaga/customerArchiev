@@ -23,6 +23,7 @@ class _RegisterState extends State<RegisterScreen> {
   TextEditingController password = TextEditingController();
 
   TextEditingController username = TextEditingController();
+  GlobalKey<FormState> formkey = GlobalKey<FormState>();
   // final DateTime now = DateTime.now();
   // final DateFormat formatter = DateFormat('yyyy-MM-dd');
   @override
@@ -144,93 +145,108 @@ class _RegisterState extends State<RegisterScreen> {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40))),
-              child: Column(children: [
-                const SizedBox(
-                  height: 30.0,
-                ),
-                CustomForm(
-                  text: "ادخل اسمك",
-                  type: TextInputType.name,
-                  name: username,
-                  sufxicon: const Icon(Icons.person),
-                ),
-                const SizedBox(
-                  height: 30.0,
-                ),
-                CustomForm(
-                  text: "ادخل ايميلك",
-                  type: TextInputType.emailAddress,
-                  name: emailaddress,
-                  sufxicon: const Icon(Icons.email),
-                ),
-                const SizedBox(
-                  height: 30.0,
-                ),
-                CustomPass(
-                    text: "ادخل كلمة المرور",
-                    type: TextInputType.visiblePassword,
-                    issecure: issecure,
-                    name: password,
-                    sufxicon: InkWell(
-                      onTap: () {
-                        issecure = !issecure;
-                        setState(() {});
-                      },
-                      child: Icon(
-                          issecure ? Icons.visibility_off : Icons.visibility),
-                    )),
-                const SizedBox(
-                  height: 30.0,
-                ),
-                GestureDetector(
-                    onTap: () {
-                      signupUser(
-                          email: emailaddress.text,
-                          password: password.text,
-                          name: username.text);
+              child: Form(
+                key: formkey,
+                child: Column(children: [
+                  const SizedBox(
+                    height: 30.0,
+                  ),
+                  CustomForm(
+                    validator: (validator) {
+                      if (validator!.isEmpty) {
+                        return "Reqired Name";
+                      }
+                      return null;
                     },
-                    child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 15.0),
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [
-                              HexColor("666666"),
-                              HexColor("333333"),
-                              HexColor("101010")
-                            ]),
-                            borderRadius: BorderRadius.circular(30)),
-                        child: Center(
-                            child: isloading
-                                ? const Center(
-                                    child: CircularProgressIndicator())
-                                : const Center(
-                                    child: Text(
-                                    "تسجيل الدخول",
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.white),
-                                  ))))),
-                const SizedBox(
-                  height: 30.0,
-                ),
-                Row(
-                  children: [
-                    const Center(
-                        child: Text(
-                      "لديك حساب بالفعل؟",
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
-                    )),
-                    TextButton(
-                        onPressed: () {
-                          Get.to(() => const LoginScreen());
+                    text: " Your Name",
+                    type: TextInputType.name,
+                    name: username,
+                    sufxicon: const Icon(Icons.person),
+                  ),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
+                  CustomForm(
+                    validator: (p0) => p0!.isEmpty ? "Reqired Email" : null,
+                    text: "Your Email ",
+                    type: TextInputType.emailAddress,
+                    name: emailaddress,
+                    sufxicon: const Icon(Icons.email),
+                  ),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
+                  CustomPass(
+                      validator: (p0) =>
+                          p0!.isEmpty ? "Reqired Password" : null,
+                      text: "  Your Password",
+                      type: TextInputType.visiblePassword,
+                      issecure: issecure,
+                      name: password,
+                      sufxicon: InkWell(
+                        onTap: () {
+                          issecure = !issecure;
+                          setState(() {});
                         },
-                        child: const Text("تسجيل الدخول",
-                            style: TextStyle(fontWeight: FontWeight.bold)))
-                  ],
-                ),
-              ]),
+                        child: Icon(
+                            issecure ? Icons.visibility_off : Icons.visibility),
+                      )),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        if (formkey.currentState!.validate()) {
+                          signupUser(
+                              email: emailaddress.text,
+                              password: password.text,
+                              name: username.text);
+                        }
+                      },
+                      child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 15.0),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(colors: [
+                                HexColor("666666"),
+                                HexColor("333333"),
+                                HexColor("101010")
+                              ]),
+                              borderRadius: BorderRadius.circular(30)),
+                          child: Center(
+                              child: isloading
+                                  ? const Center(
+                                      child: CircularProgressIndicator())
+                                  : const Center(
+                                      child: Text(
+                                      " Register",
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.white),
+                                    ))))),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
+                  Row(
+                    children: [
+                      const Center(
+                          child: Text(
+                        " Already Have Account ? ",
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      )),
+                      TextButton(
+                          onPressed: () {
+                            Get.to(() => const LoginScreen());
+                          },
+                          child: const Text(" Login",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18)))
+                    ],
+                  ),
+                ]),
+              ),
             )
           ]),
         ),

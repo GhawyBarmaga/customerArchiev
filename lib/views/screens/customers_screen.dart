@@ -163,7 +163,7 @@ class ClientsScreen extends StatelessWidget {
                                                               .spaceBetween,
                                                       children: [
                                                         Text(
-                                                            "اضافة فاتورة بيع او رصيد علاج",
+                                                            "اضافة فاتورة بيع او  شراء",
                                                             style: TextStyle(
                                                                 color: Colors
                                                                     .black,
@@ -233,9 +233,7 @@ class ClientsScreen extends StatelessWidget {
                                                   btnOkOnPress: () {
                                                     controller.deleteClients(
                                                         snapshot.data!
-                                                            .docs[index].id,
-                                                        snap.data!.docs[0]
-                                                            ['uid']);
+                                                            .docs[index].id);
                                                   },
                                                   buttonsTextStyle:
                                                       const TextStyle(

@@ -1,4 +1,5 @@
-import 'package:clients_archiev/views/screens/login_screen.dart';
+import 'package:clients_archiev/network/network_controller.dart';
+import 'package:clients_archiev/views/screens/signup_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-   Get.put(AddClientsController());
+  Get.put(AddClientsController());
+  Get.put(NetworkController());
   runApp(const MyApp());
 }
 
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
         cardTheme: const CardTheme(color: Colors.white),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      home: const RegisterScreen(),
     );
   }
 }

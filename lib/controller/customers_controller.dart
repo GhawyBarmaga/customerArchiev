@@ -4,7 +4,6 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +21,7 @@ class AddClientsController extends GetxController {
   TextEditingController searchcode = TextEditingController();
   final formKey = GlobalKey<FormState>();
   List<QueryDocumentSnapshot> data = [];
-  
+
   String deviceid = "";
 
   //List<QueryDocumentSnapshot> clientslist = [];
@@ -30,7 +29,6 @@ class AddClientsController extends GetxController {
 
   @override
   void onInit() async {
-   
     getclients();
     clearController();
     selectedValue = "";
@@ -116,7 +114,6 @@ class AddClientsController extends GetxController {
         "company": selectedValue,
         "clientid": userid,
         "guid": randomnumbers,
-       
       });
       clearController();
       selectedValue = "";
@@ -142,11 +139,11 @@ class AddClientsController extends GetxController {
 
   //==============================delete clients==============================
 
-  void deleteClients(docid, currentuser) async {
+  void deleteClients(docid) async {
     try {
       final DocumentSnapshot document = await FirebaseFirestore.instance
           .collection("users")
-          .doc(currentuser)
+          .doc(FirebaseAuth.instance.currentUser?.uid)
           .collection("clients")
           .doc(docid)
           .get();
