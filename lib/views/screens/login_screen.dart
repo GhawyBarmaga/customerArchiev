@@ -110,9 +110,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                Image.asset(
-                  "assets/images/login.png",
-                  fit: BoxFit.cover,
+                const Icon(
+                  Icons.person_outline,
+                  size: 100,
                 ),
                 const SizedBox(
                   height: 20.0,
